@@ -1,0 +1,193 @@
+{
+  "STATUS": "All live manuscript values come from uninterrupted state-preserved runs and are reported on the 20 fresh validation realizations (seeds 500-519). The chunk-restarted run is excluded from all archives and results. Values under 'superseded_single_draw_operating' come from a single screening realization, are retained for traceability only, and MUST be excluded from manuscript generation.",
+  "design_recommended": {
+    "P_solar": 1846.8,
+    "P_wind": 668.0,
+    "P_elz": 1028.7,
+    "x_PEM": 0.4,
+    "E_BESS": 55.2,
+    "M_HSS": 1855.8
+  },
+  "design_rounded_for_text": {
+    "solar_MW": 1.85,
+    "wind_MW": 0.67,
+    "electrolysis_MW": 1.03,
+    "x_PEM": 0.4,
+    "BESS_kWh": 55,
+    "HSS_t": 1.86
+  },
+  "selection_rule": "least-cost nondominated design with q95(LPSP) <= 0.1% estimated on 8 common screening realizations",
+  "validation_20_fresh_demand": {
+    "n": 20,
+    "lcoh_mean": 11.7184,
+    "lcoh_sd": 0.1185,
+    "lcoh_se": 0.0265,
+    "lcoh_ci95_halfwidth": 0.0519,
+    "lpsp_mean": 0.0014,
+    "lpsp_q95": 0.00421,
+    "lpsp_max": 0.00441,
+    "curt_mean": 0.2124
+  },
+  "holdout_2023_four_draws": {
+    "lcoh_per_draw": [
+      12.027,
+      11.5059,
+      11.567,
+      11.7032
+    ],
+    "lpsp_per_draw": [
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "lpsp_max": 0.0,
+    "curt_mean": 0.1897,
+    "h2_served_range": [
+      64498,
+      67450
+    ]
+  },
+  "screening_vs_validation": {
+    "q95_screen_8draws": 0.00047,
+    "q95_validation_20draws": 0.00421,
+    "q95_20draw_pct": 0.4207,
+    "selected_q95_screen_pct": 0.0467,
+    "selected_q95_validation_pct": 0.4207,
+    "selected_ratio": 9.01,
+    "context_n_lowloss_designs": 27,
+    "context_ratio_median": 1.89,
+    "context_ratio_range": [
+      1.42,
+      9.01
+    ],
+    "context_zero_screening_designs": 3,
+    "supporting_analyses": "resampling of 8-draw subsets (T27) and paired low-loss design comparison (T28) are retained as context",
+    "mechanism": "OPEN QUESTION. Sampling variability, design selection, and design-specific stochastic response may all contribute. The available samples are too small to identify a unique cause; no mechanistic claim is made.",
+    "reportable_conclusion": "A service-loss statistic computed on the realizations used to select a design is not an independent performance estimate and requires validation on separate realizations."
+  },
+  "ablation": {
+    "F0": 21.3595,
+    "F1_grid": 18.7569,
+    "F2_polished": 17.252,
+    "F3_polished": 10.4339,
+    "benefit_renewable_only": 2.6027,
+    "benefit_downstream_only": 4.1075,
+    "benefit_joint": 10.9256,
+    "interaction": 4.2155,
+    "F3_seed_replication": {
+      "seed42_fresh": 10.5044,
+      "seed7_fresh": 10.5736
+    },
+    "caveat": "F3 replicated across two seeds; F1 and F2 executed once under the final treatment"
+  },
+  "polish_overfitting_test": {
+    "gain_selection_set": 0.2904,
+    "gain_fresh_set": 0.2918,
+    "verdict": "improvement transfers; not selection-set artifact"
+  },
+  "reliability_premium": {
+    "lcoh_eps1pct": 10.4339,
+    "lcoh_eps0.1pct": 11.7184,
+    "premium": 1.2845
+  },
+  "mass_balance_verification": {
+    "max_discarded_kg_yr": 8.6e-14,
+    "max_residual_kg_yr": 6.7e-09,
+    "bess_cyclic_imbalance": 0.0,
+    "hss_cyclic_imbalance": 0.0
+  },
+  "lcoh_decomposition": {
+    "capex": 7.8849,
+    "om": 1.5964,
+    "replacement": 1.5986,
+    "cyclic": 0.6384
+  },
+  "operating": {
+    "basis": "mean over the 20 fresh validation realizations (seeds 500-519), identical to the LCOH, service-loss and hydrogen-balance basis",
+    "h2_produced": 66246.7,
+    "h2_produced_sd": 661.4,
+    "h2_served": 66012.3,
+    "h2_served_sd": 657.6,
+    "awe_life_yr": 4.48,
+    "awe_life_sd": 0.04,
+    "pem_life_yr": 14.68,
+    "pem_life_sd": 0.21,
+    "awe_hours": 6340.0,
+    "pem_hours": 3764.0,
+    "bess_cycles": 301.0,
+    "hss_stability_index": 0.2336,
+    "awe_hours_sd": 21.2,
+    "pem_hours_sd": 44.1,
+    "bess_cycles_sd": 2.6,
+    "hss_stability_index_sd": 0.0559
+  },
+  "WITHDRAWN": [
+    "19.3746 USD/kg",
+    "5.00% curtailment",
+    "36.23% rule-based",
+    "11.2851 USD/kg",
+    "34.95% curtailment",
+    "10.45 co-sizing",
+    "4.82 interaction",
+    "zero LPSP / zero unserved demand",
+    "10.56 pooled design",
+    "hybrid advantage 0.49-1.40 USD/kg",
+    "authoritative production run"
+  ],
+  "lcoh_decomposition_basis": "mean of components across the 20 fresh validation draws; sums exactly to the 20-draw mean LCOH of 11.7184",
+  "lcoh_decomposition_total": 11.7184,
+  "hydrogen_balance_kg_per_yr": {
+    "basis": "measured, mean of 20 fresh validation draws",
+    "produced": 66246.7,
+    "served_directly": 42809.7,
+    "routed_to_hss_gross": 23437.0,
+    "stored_after_loss": 23202.6,
+    "hss_transfer_loss": 234.4,
+    "served_from_hss": 23202.6,
+    "total_served": 66012.3,
+    "discarded": 6.294208442269627e-14,
+    "net_inventory_change": 0.0,
+    "fraction_via_storage": 0.3538
+  },
+  "storage_behaviour": {
+    "basis": "logged hourly trajectories, 2020-2022 chronology, 20 fresh demand realizations (seeds 500-519), same basis as the LCOH and service-loss validation",
+    "hss_capacity_kg": 1855.8,
+    "modeled_floor_kg": 92.79,
+    "median_inventory_pct_mean": 93.0,
+    "median_inventory_pct_sd": 1.73,
+    "pct_hours_above_90pct_mean": 58.5,
+    "pct_hours_above_90pct_sd": 6.02,
+    "pct_hours_below_25pct_mean": 2.5,
+    "pct_hours_below_25pct_sd": 1.87,
+    "hours_at_floor_mean": 46.6,
+    "hours_at_floor_sd": 51.3,
+    "hours_at_floor_range": [
+      0,
+      147
+    ],
+    "realizations_never_reaching_floor": 8,
+    "floor_metric_status": "SECONDARY ONLY. High draw-to-draw variability; not a system property.",
+    "threshold_caveat": "25% is a descriptive threshold; duration metrics vary 13.8-43.6 days across 15-40% thresholds (T24)",
+    "deepest_drawdown_kg": 187,
+    "deepest_drawdown_days": 1.0,
+    "deepest_drawdown_note": "one realization (seed 500); illustrative only"
+  },
+  "production_cap_verification": {
+    "statement": "P_AWE/SEC_AWE + P_PEM/SEC_PEM <= q_max(t) verified hourly after technology allocation",
+    "max_violation_kg_per_h": 1.7763568394002505e-15,
+    "realizations_checked": 5,
+    "hours_per_realization": 26304,
+    "note": "the pre-allocation power bound uses SEC_AWE (the smaller SEC) and is therefore conservative; this check confirms the post-allocation constraint directly rather than relying on that argument"
+  },
+  "superseded_single_draw_operating": {
+    "basis": "ONE screening realization; retained only for traceability, not for manuscript use",
+    "awe_life_yr": 4.4,
+    "pem_life_yr": 14.9,
+    "awe_hours": 6355,
+    "pem_hours": 3706,
+    "bess_cycles": 304,
+    "h2_produced": 65518,
+    "h2_served": 65289
+  }
+}

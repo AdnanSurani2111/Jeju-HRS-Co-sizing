@@ -1,0 +1,9 @@
+{
+  "min_hss_kg": 92.79232418221488,
+  "min_at": "2021-09-02 17:00:00",
+  "decline_days": 1.0,
+  "peak_before_kg": 280.20934505075667,
+  "drawdown_kg": 187.41702086854178,
+  "episodes_below_25pct": 23,
+  "longest_below_25pct_days": 22.7
+}
