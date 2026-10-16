@@ -1,0 +1,11 @@
+case,optimizer_seed,attempted,selected,audit_pass_among_returned,familywise_pass_among_returned,qualified_decisions
+F3,42,3,0,Not applicable,Not applicable,0
+F3,7,3,3,3,3,3
+F3,11,3,3,3,3,3
+F3,17,3,3,3,3,3
+F3,23,3,0,Not applicable,Not applicable,0
+F2,42,3,3,3,3,3
+F2,7,3,3,3,3,3
+F2,11,3,3,3,3,3
+F2,17,3,3,3,3,3
+F2,23,3,3,3,3,3

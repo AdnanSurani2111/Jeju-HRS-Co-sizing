@@ -25,7 +25,9 @@ import config as C
 
 def simulate(P_solar, P_wind, P_elz, x_pem, E_bess, M_hss,
              pu_solar, pu_wind, demand_kg_h, deg_factor=1.0, warmup_frac=0.10,
-             log_trajectory=False):
+             log_trajectory=False, warmup_passes=1,
+             warmup_tolerance=1e-10, warmup_max_passes=50,
+             initial_soc=None, initial_hss=None):
     """
     Parameters
     ----------
@@ -160,10 +162,27 @@ def simulate(P_solar, P_wind, P_elz, x_pem, E_bess, M_hss,
 
     # ---- warm-up over the leading fraction of the record, then measure -------
     n_warm = max(int(T * warmup_frac), 24)
-    soc0 = np.full(N, C.BESS_SOC_INIT)
-    hss0 = M_hss * C.HSS_INIT_FRAC
-    # cheap warm-up: run the whole record once without collecting
-    soc0, hss0, _ = run(soc0, hss0, collect=False)
+    soc0 = (np.full(N, C.BESS_SOC_INIT) if initial_soc is None
+            else np.broadcast_to(np.asarray(initial_soc, dtype=float), (N,)).copy())
+    hss0 = (M_hss * C.HSS_INIT_FRAC if initial_hss is None
+            else np.broadcast_to(np.asarray(initial_hss, dtype=float), (N,)).copy())
+    # Repeated full-horizon warm-up for the sensitivity audit.  The production
+    # model corresponds to warmup_passes=1.  A negative value iterates until
+    # both normalized terminal differences fall below warmup_tolerance.
+    passes_used = 0
+    if warmup_passes < 0:
+        while passes_used < warmup_max_passes:
+            soc1, hss1, _ = run(soc0, hss0, collect=False)
+            passes_used += 1
+            soc_delta = np.max(np.abs(soc1 - soc0))
+            hss_delta = np.max(np.abs(hss1 - hss0) / np.maximum(M_hss, 1e-9))
+            soc0, hss0 = soc1, hss1
+            if max(soc_delta, hss_delta) <= warmup_tolerance:
+                break
+    else:
+        for _ in range(int(warmup_passes)):
+            soc0, hss0, _ = run(soc0, hss0, collect=False)
+            passes_used += 1
     hss_start = hss0.copy()
     soc_start = soc0.copy()
     soc_end, hss_end, a = run(soc0, hss0, collect=True)
@@ -194,6 +213,9 @@ def simulate(P_solar, P_wind, P_elz, x_pem, E_bess, M_hss,
         bess_cycles=a['bess_ch'] / years / np.maximum(E_bess, 1.0),
         hss_imbalance=np.abs(hss_end - hss_start) / np.maximum(M_hss, 1e-9),
         soc_imbalance=np.abs(soc_end - soc_start),
+        soc_start=soc_start, soc_end=soc_end,
+        hss_start=hss_start, hss_end=hss_end,
+        warmup_passes=np.full(N, passes_used, dtype=int),
         trajectory=({k: np.array(v) for k, v in TRAJ.items()} if log_trajectory else None),
         demand_annual=demand_total / years,
         h2_direct=a['direct'] / years, h2_from_hss=a['release'] / years,

@@ -1,0 +1,6 @@
+{
+  "nondominance": "All three objectives within each final population; no pooling or reselection",
+  "stars": "Frozen selections including any training-dominated selections",
+  "hypervolume_history": "Unavailable in historical trace: only scalar minima and final population retained",
+  "protocol_unchanged": true
+}

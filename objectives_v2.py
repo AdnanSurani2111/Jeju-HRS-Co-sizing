@@ -30,14 +30,21 @@ def pv_replacement(capex, life, r=None, horizon=None):
 
 
 def evaluate_population(X, pu_solar, pu_wind, demand_h,
-                        deg_factor=1.0, cyclic_factor=1.0, discount_rate=None):
+                        deg_factor=1.0, cyclic_factor=1.0, discount_rate=None,
+                        warmup_passes=1, warmup_tolerance=1e-10,
+                        warmup_max_passes=50, initial_soc=None,
+                        initial_hss=None):
     """X : (N,6) -> dict of (N,) results."""
     X = np.atleast_2d(np.asarray(X, dtype=float))
     P_sol, P_win, P_elz, x_pem, E_b, M_h = (X[:, i] for i in range(6))
     r = C.DISCOUNT_RATE if discount_rate is None else float(discount_rate)
 
     sim = simulate(P_sol, P_win, P_elz, x_pem, E_b, M_h,
-                   pu_solar, pu_wind, demand_h, deg_factor=deg_factor)
+                   pu_solar, pu_wind, demand_h, deg_factor=deg_factor,
+                   warmup_passes=warmup_passes,
+                   warmup_tolerance=warmup_tolerance,
+                   warmup_max_passes=warmup_max_passes,
+                   initial_soc=initial_soc, initial_hss=initial_hss)
 
     P_awe = P_elz * (1.0 - x_pem)
     P_pem = P_elz * x_pem

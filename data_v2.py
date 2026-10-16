@@ -74,7 +74,7 @@ def demand_series(n_hours, seed=0, scale=1.0, flat=None, basis='full'):
 
 
 def re_statistics():
-    """True capacity factors, computed against year-specific fleet capacity."""
+    """Normalized generation indices based on the configured reference ratings."""
     S = pd.read_csv(os.path.join(C.DATA_DIR, 'Jeju_Solar_Generation_2020_2023_KPX.csv'))
     W = pd.read_csv(os.path.join(C.DATA_DIR, 'Jeju_Wind_Generation_2020_2023_KPX.csv'))
     rows = []

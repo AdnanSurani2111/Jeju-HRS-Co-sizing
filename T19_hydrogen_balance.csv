@@ -1,0 +1,11 @@
+term,kg_per_yr
+H2 produced,66246.6612
+served directly from electrolyzer,42809.6931
+routed to HSS (gross inflow),23436.9681
+stored after transfer loss,23202.5984
+HSS transfer loss,234.3697
+served from HSS,23202.5984
+total served,66012.2915
+discarded,0.0
+net HSS inventory change (cyclic),0.0
+mass balance residual,0.0

@@ -1,0 +1,19 @@
+{
+  "design": [
+    1846.7825617959973,
+    668.0003220745918,
+    1028.7109795926112,
+    0.4005987732169565,
+    55.24554888853066,
+    1855.8464836442977
+  ],
+  "validation_seeds": [
+    500,
+    519
+  ],
+  "chronology_hours": 26304,
+  "production_warmup_passes": 1,
+  "iterative_tolerance": 1e-10,
+  "iterative_max_passes": 50,
+  "note": "Diagnostic only; it does not replace explicit terminal-state constraints in optimization."
+}

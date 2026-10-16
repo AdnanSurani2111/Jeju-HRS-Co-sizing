@@ -104,6 +104,6 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 FIG_DIR = os.path.join(BASE_DIR, 'figures')
 TABLE_DIR = os.path.join(BASE_DIR, 'tables')
 CKPT_DIR = os.path.join(BASE_DIR, 'checkpoints')
-DATA_DIR = os.path.join(BASE_DIR, 'data')
+DATA_DIR = os.path.abspath(os.path.join(BASE_DIR, '..', '..', 'data'))
 for _d in (FIG_DIR, TABLE_DIR, CKPT_DIR, DATA_DIR):
     os.makedirs(_d, exist_ok=True)
