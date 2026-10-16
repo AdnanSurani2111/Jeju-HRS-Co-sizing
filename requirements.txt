@@ -1,0 +1,13 @@
+numpy==2.3.5
+pandas==2.2.3
+scipy==1.17.0
+matplotlib==3.10.8
+pymoo==0.6.2
+dill==0.4.1
+moocore==0.3.2
+openpyxl==3.1.5
+autograd==1.9.1
+cma==4.5.0
+alive-progress==3.3.0
+platformdirs==4.13.0
+reportlab==4.4.9

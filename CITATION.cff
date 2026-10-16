@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "Please cite the associated manuscript when using this research code."
+type: software
+title: "Reliability Qualified Co-Sizing of Renewable Hydrogen Supply Systems: Screening Uncertainty and Independent Validation"
+authors:
+  - family-names: Ejaz
+    given-names: Muhammad Adnan
+  - family-names: Naqvi
+    given-names: Syed Shehryar Ali
+  - family-names: Khan
+    given-names: Murad Ali
+  - family-names: Faseeh
+    given-names: Muhammad
+  - family-names: Kim
+    given-names: Do-Hyeun
+version: "2026-10-15"
+date-released: "2026-10-15"
+abstract: "Research implementation and recorded experiments for chronological renewable hydrogen supply sizing, finite-sample screening and independent demand-generator validation."
