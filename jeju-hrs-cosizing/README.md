@@ -1,4 +1,4 @@
-# Chronological Co-Sizing and Independent Reliability Validation of Renewable Hydrogen Refueling Systems
+# Reliability Qualified Co-Sizing of Renewable Hydrogen Supply Systems: Screening Uncertainty and Independent Validation
 
 Code and data for a multi-objective capacity-planning study of a renewable
 hydrogen refueling station on Jeju Island, Republic of Korea.
